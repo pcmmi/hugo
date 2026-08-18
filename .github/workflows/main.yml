@@ -1,8 +1,9 @@
-name: Hugo CI/CD
+name: Deploy Hugo site to Pages
+
 on:
   push:
     branches: [ main ]
-  # pull_request では deploy しない（build/検証のみにしたいなら別途 workflow_dispatch や build専用jobを用意）
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,9 +18,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2

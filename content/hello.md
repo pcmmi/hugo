@@ -6,3 +6,5 @@ title = 'Hello'
 # Hello Hugo
 
 GitHub Actions
+
+add
